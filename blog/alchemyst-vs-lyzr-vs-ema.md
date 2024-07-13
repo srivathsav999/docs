@@ -2,7 +2,7 @@
 description: >-
   A concise overview of the differences that makes Alchemyst, Lyzr and Ema stand
   out.
-cover: ../.gitbook/assets/Alchemyst.jpg
+cover: .gitbook/assets/Alchemyst.jpg
 coverY: 152.80266666666665
 layout:
   cover:
