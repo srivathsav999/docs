@@ -6,7 +6,7 @@ description: Looking into the tech that powers Alchemysts to beyond Turing Test 
 
 ## Motivation
 
-Pushing Alchemysts to pass the [Turing test](https://en.wikipedia.org/wiki/Turing\_test) and mimic human-level behaviour, especially in a context-intensive way, is what we always do. But as human-like as AI responses might seem, getting tasks done fully through generative AI at one go is still a far cry. This is exactly where our Workflow Planner comes in.
+Pushing Alchemysts to pass the [Turing test](https://en.wikipedia.org/wiki/Turing_test) and mimic human-level behaviour, especially in a context-intensive way, is what we always do. But as human-like as AI responses might seem, getting tasks done fully through generative AI at one go is still a far cry. This is exactly where our Workflow Planner comes in.
 
 ## Background
 

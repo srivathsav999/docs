@@ -22,7 +22,7 @@ A [report by Predibase](https://predibase.com/fine-tuning-index) shows that smal
 
 ## Why Alchemyst models?
 
-The Alchemyst Family of Models are a set of Large Models developed in-house by Alchemyst - optimised for [large-scale cost-efficient](https://gist.github.com/jerzydziewierz/3b4a169c8d7cba89e18f613b32c3f52b) deployments, following instructions, and generating authentic and concise outputs. They enable us to stay at the top of our game even when [others are down](https://www.calcalistech.com/ctechnews/article/rjair32er). You can rely on Alchemysts getting your work done when other traditional LLM Providers may be down - simply because all of our language-based tasks are done in-house, rather than wrapping an [API call to OpenAI’s GPT models](https://learnprompting.org/blog/2024/2/4/gpt\_wrappers).
+The Alchemyst Family of Models are a set of Large Models developed in-house by Alchemyst - optimised for [large-scale cost-efficient](https://gist.github.com/jerzydziewierz/3b4a169c8d7cba89e18f613b32c3f52b) deployments, following instructions, and generating authentic and concise outputs. They enable us to stay at the top of our game even when [others are down](https://www.calcalistech.com/ctechnews/article/rjair32er). You can rely on Alchemysts getting your work done when other traditional LLM Providers may be down - simply because all of our language-based tasks are done in-house, rather than wrapping an [API call to OpenAI’s GPT models](https://learnprompting.org/blog/2024/2/4/gpt_wrappers).
 
 We have two families of models that we use internally at Alchemyst:
 
@@ -105,10 +105,10 @@ This is how the training dataset distribution across various tasks looks like fo
 
 {% tabs %}
 {% tab title="Alchemyst C" %}
-* Oriented for content generation and instruction following
-* Based on Phi3-Vision-128k model
-* Consumer-facing
-* Multimodal
+- Oriented for content generation and instruction following
+- Based on Phi3-Vision-128k model
+- Consumer-facing
+- Multimodal
 {% endtab %}
 
 {% tab title="Alchemyst X" %}

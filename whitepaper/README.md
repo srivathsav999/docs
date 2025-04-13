@@ -66,7 +66,7 @@ The Alchemyst platform is a “platform” in its true sense, serving as a launc
     \
 
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption><p>Diagram showing a surjective function. Set A denotes inputs, Set B denotes outputs.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Diagram showing a surjective function. Set A denotes inputs, Set B denotes outputs.</p></figcaption></figure>
 
 *   **Microservices Segment**:  All data analysis/deep-learning/prompt engineering/recommendation systems happen here. The responses that make Alchemysts force multipliers and not just another tool are cooked here. DevOps kicks in here at full force, and we have dashboards, monitors, etc setup for the vast workloads these microservices are being made to handle. Our LLMs and other tools are hosted in this layer.\
     \
@@ -115,7 +115,7 @@ In the above diagram, we can clearly see how the relevant data points are being 
 
 ### Alchemyst Family of Models
 
-The Alchemyst Family of Models are a set of Large Models developed in-house by Alchemyst - optimised for [large-scale cost-efficient](https://gist.github.com/jerzydziewierz/3b4a169c8d7cba89e18f613b32c3f52b) deployments, following instructions, and generating authentic and concise outputs. They enable us to stay at the top of our game even when [others are down](https://www.calcalistech.com/ctechnews/article/rjair32er). You can rely on Alchemysts getting your work done when other traditional LLM Providers may be down - simply because all of our language-based tasks are done in-house, rather than wrapping an [API call to OpenAI’s GPT models](https://learnprompting.org/blog/2024/2/4/gpt\_wrappers).
+The Alchemyst Family of Models are a set of Large Models developed in-house by Alchemyst - optimised for [large-scale cost-efficient](https://gist.github.com/jerzydziewierz/3b4a169c8d7cba89e18f613b32c3f52b) deployments, following instructions, and generating authentic and concise outputs. They enable us to stay at the top of our game even when [others are down](https://www.calcalistech.com/ctechnews/article/rjair32er). You can rely on Alchemysts getting your work done when other traditional LLM Providers may be down - simply because all of our language-based tasks are done in-house, rather than wrapping an [API call to OpenAI’s GPT models](https://learnprompting.org/blog/2024/2/4/gpt_wrappers).
 
 <figure><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXd4niQo9tLjcG4MTxYUrBzZXSJzsMfmq9ZxpWXzuwCtjo7sZzD5AnzeAXYAd-GFmpqXBCEfTsExD8eSDATZqGfyvbJmSwKVA-Gh1KH9IjDl2RVNpO_waqvBt3wAwJZfrCL9ltckEuS7cgU7FVwISYgH1_CF?key=GpwUDRtVHlzYbr-sqt0rVg" alt=""><figcaption><p>Alchemyst C1 model on its private HuggingFace repository.</p></figcaption></figure>
 
