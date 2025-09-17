@@ -4,7 +4,7 @@
   "api": {
     "openapi": "https://platform-backend.getalchemystai.com/api/openapi.json"
   },
-  "name": "Mint Starter Kit",
+  "name": "Alchemyst AI Docs",
   "colors": {
     "primary": "#f49025",
     "light": "#e8a916",
@@ -78,14 +78,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "anchor": "Website",
+          "href": "https://getalchemystai.com",
           "icon": "book-open-cover"
         },
         {
           "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "href": "https://getalchemystai.com/community",
+          "icon": "discord"
         },
         {
           "anchor": "Blog",
