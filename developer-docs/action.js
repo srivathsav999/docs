@@ -1,5 +1,11 @@
 const { fetchOpenApiJson, PLATFORM_BASE_URLS } = require("./ctx.js");
-const { readFileSync, writeFileSync, mkdirSync } = require("fs");
+const {
+	readFileSync,
+	writeFileSync,
+	mkdirSync,
+	readdirSync,
+	statSync,
+} = require("fs");
 
 const path = require("path");
 
@@ -28,7 +34,7 @@ const updateDocsOpenApi = async (branch = "main") => {
 
 	const openApiJson = { ...currentOpenApiJson, ...fetchedOpenApiJson };
 
-	writeFileSync(openApiJsonPath, JSON.stringify(openApiJson));
+	writeFileSync(openApiJsonPath, JSON.stringify(openApiJson, null, 2));
 
 	return openApiJson;
 };
@@ -87,4 +93,80 @@ const generateMdx = async (branch = "main") => {
 	});
 };
 
+const walk = (dir, fileList = []) => {
+	const files = readdirSync(dir);
+	files.forEach((file) => {
+		const filePath = path.join(dir, file);
+		const stat = statSync(filePath);
+		if (stat.isDirectory()) {
+			walk(filePath, fileList);
+		} else if (file.endsWith(".mdx")) {
+			fileList.push(filePath);
+		}
+	});
+	return fileList;
+};
+
+const fetchDocsJson = () => {
+	const data = readFileSync(path.join(__dirname, "docs.json"), {
+		encoding: "utf-8",
+	});
+
+	return JSON.parse(data);
+};
+
+const generateNewDocsJson = () => {
+	const endpointFiles = walk(apiReferenceEndpointsDir)
+		.filter((entry) => !!entry && entry.length > 0)
+		.map((entry) => entry.slice(entry.indexOf("api-reference")));
+	console.log(endpointFiles);
+
+	let docsJson = fetchDocsJson();
+
+	const apiReferencesTab = docsJson.navigation.tabs
+		.filter((entry) => entry.tab === "API reference")
+		.pop();
+
+	if (!apiReferencesTab) {
+		throw new Error("No API References tab found in docs.json!");
+	}
+	let endpointExamplesGroup = apiReferencesTab.groups
+		.filter((group) => group.group === "Endpoint examples")
+		.pop();
+
+	if (!endpointExamplesGroup) {
+		throw new Error("No Endpoint Examples group found in API References tab!");
+	}
+
+	const newDocsJson = {
+		...docsJson,
+		navigation: {
+			...docsJson.navigation,
+			tabs: [
+				...docsJson.navigation.tabs.filter(
+					(entry) => entry.tab !== "API reference",
+				),
+				{
+					tab: "API reference",
+					groups: [
+						{
+							group: "API documentation",
+							pages: ["api-reference/introduction"],
+						},
+						{
+							group: "Endpoint examples",
+							pages: endpointFiles,
+						},
+					],
+				},
+			],
+		},
+	};
+
+	writeFileSync("docs.json", JSON.stringify(newDocsJson, null, 2));
+
+	return endpointFiles;
+};
+
 generateMdx();
+generateNewDocsJson();
