@@ -4,7 +4,11 @@ const {
 	writeFileSync,
 	mkdirSync,
 	readdirSync,
+	existsSync,
+	lstatSync,
+	unlinkSync,
 	statSync,
+	rmdirSync,
 } = require("fs");
 
 const path = require("path");
@@ -168,4 +172,23 @@ const generateNewDocsJson = () => {
 	return endpointFiles;
 };
 
-generateMdx().then(setTimeout(generateNewDocsJson, 5000));
+const deleteAllAutogenFiles = async () => {
+	const deleteFolderRecursive = (folderPath) => {
+		if (existsSync(folderPath)) {
+			readdirSync(folderPath).forEach((file) => {
+				const curPath = path.join(folderPath, file);
+				if (lstatSync(curPath).isDirectory()) {
+					deleteFolderRecursive(curPath);
+				} else {
+					unlinkSync(curPath);
+				}
+			});
+			rmdirSync(folderPath);
+		}
+	};
+
+	deleteFolderRecursive(apiReferenceEndpointsDir);
+	mkdirSync(apiReferenceEndpointsDir, { recursive: true });
+}
+
+deleteAllAutogenFiles().then(generateMdx).then(setTimeout(generateNewDocsJson, 5000));
