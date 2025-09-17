@@ -168,5 +168,4 @@ const generateNewDocsJson = () => {
 	return endpointFiles;
 };
 
-generateMdx();
-generateNewDocsJson();
+generateMdx().then(setTimeout(generateNewDocsJson, 5000));
