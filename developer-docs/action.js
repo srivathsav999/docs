@@ -92,7 +92,7 @@ const generateMdx = async (branch = "main") => {
 	console.log(`Generating MDX files for ${branch} branch`);
 	const updatedOpenApiJson = await updateDocsOpenApi(branch);
 
-	Object.keys(updatedOpenApiJson["paths"]).forEach((path) => {
+	Object.keys(updatedOpenApiJson["paths"]).filter(path => path.includes("context")).forEach((path) => {
 		createApiReferenceMdxFiles(updatedOpenApiJson, path);
 	});
 };
