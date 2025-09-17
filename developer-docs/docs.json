@@ -1,14 +1,14 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "aspen",
   "api": {
     "openapi": "https://platform-backend.getalchemystai.com/api/openapi.json"
   },
   "name": "Mint Starter Kit",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#f49025",
+    "light": "#e8a916",
+    "dark": "#151515"
   },
   "favicon": "/logo/logo.png",
   "navigation": {
@@ -96,8 +96,8 @@
     }
   },
   "logo": {
-    "light": "/logo/logo-light.png",
-    "dark": "/logo/logo.png"
+    "light": "/logo/logo-light-2.png",
+    "dark": "/logo/logo-dark.png"
   },
   "navbar": {
     "links": [
