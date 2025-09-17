@@ -1,6 +1,9 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
+  "api": {
+    "openapi": "https://platform-backend.getalchemystai.com/api/openapi.json"
+  },
   "name": "Mint Starter Kit",
   "colors": {
     "primary": "#16A34A",
