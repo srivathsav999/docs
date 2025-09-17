@@ -118,7 +118,7 @@ const fetchDocsJson = () => {
 const generateNewDocsJson = () => {
 	const endpointFiles = walk(apiReferenceEndpointsDir)
 		.filter((entry) => !!entry && entry.length > 0)
-		.map((entry) => entry.slice(entry.indexOf("api-reference")));
+		.map((entry) => entry.slice(entry.indexOf("api-reference"), entry.length-4));
 	console.log(endpointFiles);
 
 	let docsJson = fetchDocsJson();
