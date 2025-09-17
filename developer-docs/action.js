@@ -61,7 +61,7 @@ const createApiReferenceMdxFiles = (openApiSpec, endPointPath) => {
 
 	const filesContent = methods.map((method) => {
 		const content = `---
-title: ${pathData[method].summary ?? endPointPath}
+title: '${pathData[method].summary ?? endPointPath}'
 openapi: '${method.toUpperCase()} ${endPointPath}'
 ---`;
 		return content;
