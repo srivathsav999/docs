@@ -1,0 +1,19 @@
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs at 00:00 UTC every day (5:30 am IST)
+  push:
+    branches:
+      - main
+
+jobs:
+  update-openapi:
+    runs-on: ubuntu-latest
+    env:
+      PLATFORM_API_KEY: ${{ secrets.PLATFORM_API_KEY }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run context update
+        run: cd developer-docs && node action.js
