@@ -43,9 +43,10 @@
           {
             "group": "AI tools",
             "pages": [
+              "ai-tools/mcps",
               "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "ai-tools/claude-desktop",
+              "ai-tools/visual-studio-code"
             ]
           }
         ]
