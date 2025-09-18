@@ -1,0 +1,47 @@
+---
+title: "Visual Studio Code MCP"
+description: "Configure Visual Studio Code MCP"
+icon: "water"
+---
+
+### settings.json
+
+1. Ensure that you have VSCode v101 or above.
+2. Press Ctrl (or Cmd) + Shift + P.
+3. Go to **User Settings JSON**, then add the following section:
+
+```json
+"mcp": {
+  "servers": {
+    "alchemyst-context-mcp": {
+      "url": "https://mcp.getalchemystai.com/mcp/sse",
+      "headers": {
+        "Authorization": "Bearer YOUR_ALCHEMYST_PLATFORM_API_KEY"
+      }
+    }
+  }
+}
+```
+
+3. You will see a faint Start button popping right up on top of the snippet you pasted from above. Your MCP will be ready to use!
+
+### Interactive setup
+
+1. Ensure that you have VSCode v101 or above.
+2. Press Ctrl (or Cmd) + Shift + P.
+3. Type MCP
+4. You will see an option called `MCP: Add Server...`. Select that.
+5. You will see multiple options for MCP transport, select 'HTTP (HTTP or Server-sent events)'. Select that.
+6. Enter the URL: `https://mcp.getalchemystai.com/mcp/sse`
+7. Select a server ID. This is going to be your server name.
+8. You will be asked if the settings is to be saved for your User-level `settings.json` or Workspace.
+9. You will then be redirected to the respective `settings.json` file.
+10. Then edit the headers inside the MCP server object in `settings.json` with
+
+```json
+"headers": {
+  "Authorization": "Bearer YOUR_ALCHEMYST_PLATFORM_API_KEY"
+}
+```
+
+You will see a faint Start button popping right up on top of the MCP object in your present `settings.json` file. Your MCP will be ready to use!

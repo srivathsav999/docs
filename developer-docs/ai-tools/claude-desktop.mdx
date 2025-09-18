@@ -1,0 +1,65 @@
+---
+title: "Claude Desktop MCP"
+description: "Configure Claude Desktop MCP"
+icon: "asterisk"
+---
+
+### Run with Docker
+
+Navigate to Hamburger Menu on top left corner > File > Settings.
+
+A new popup will come up. Choose **Developer**, click the **Edit Config**.
+
+It will take you to a file called `claude_desktop_config.json`.
+
+In that file, put the following configuration:
+
+```json
+"mcpServers": {
+  "alchemyst_context_processor_mcp": {
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "supercorp/supergateway",
+      "--sse",
+      "https://mcp.getalchemystai.com/mcp/sse",
+      "--oauth2Bearer",
+      "YOUR_ALCHEMYST_PLATFORM_API_KEY"
+    ]
+  }
+}
+```
+
+Restart Claude Desktop
+
+**Note that these instructions are valid for all desktop applications that use the STDIO MCP mode.**
+
+### Run with npx
+
+Navigate to Hamburger Menu on top left corner > File > Settings.
+
+A new popup will come up. Choose **Developer**, click the **Edit Config**.
+
+It will take you to a file called `claude_desktop_config.json`.
+
+In that file, put the following configuration:
+
+```json
+"mcpServers": {
+  "alchemyst_context_processor_mcp": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "supergateway",
+      "--sse",
+      "https://mcp.getalchemystai.com/mcp/sse",
+      "--oauth2Bearer",
+      "YOUR_ALCHEMYST_PLATFORM_API_KEY"
+    ]
+  }
+}
+```
+
+**Note that these instructions are valid for all desktop applications that use the STDIO MCP mode.**
