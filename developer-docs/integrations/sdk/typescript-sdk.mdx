@@ -2,7 +2,6 @@
 title: 'Typescript SDK'
 description: 'Get started with the Alchemyst Typescript SDK'
 ---
-
 ### Installation
 
 ```bash
@@ -31,8 +30,7 @@ export ALCHEMYST_AI_API_KEY="your_api_key_here"
 import AlchemystAI from '@alchemystai/sdk';
 
 const client = new AlchemystAI({
-  // If ALCHEMYST_AI_API_KEY is set, you can omit apiKey
-  // apiKey: process.env.ALCHEMYST_AI_API_KEY,
+    apiKey: process.env.ALCHEMYST_AI_API_KEY,
 });
 
 async function main() {
@@ -50,6 +48,12 @@ All methods return a promise you can `await`. Types are available out-of-the-box
 #### Context: Add
 
 ```ts
+import AlchemystAI from '@alchemystai/sdk';
+
+const client = new AlchemystAI({
+    apiKey: process.env.ALCHEMYST_AI_API_KEY,
+});
+
 await client.v1.context.add({
   documents: [
             {
@@ -71,6 +75,12 @@ await client.v1.context.add({
 #### Context: Search
 
 ```ts
+import AlchemystAI from '@alchemystai/sdk';
+
+const client = new AlchemystAI({
+    apiKey: process.env.ALCHEMYST_AI_API_KEY,
+});
+
 const { contexts } = await client.v1.context.search({
         query: 'Your search query here',
         similarity_threshold: 0.8,
@@ -85,6 +95,12 @@ console.log(contexts);
 #### Context: Delete
 
 ```ts
+import AlchemystAI from '@alchemystai/sdk';
+
+const client = new AlchemystAI({
+    apiKey: process.env.ALCHEMYST_AI_API_KEY,
+});
+
 await client.v1.context.delete({
   source: 'web-upload',
   user_id: 'your_user_id',          // optional
@@ -97,6 +113,11 @@ await client.v1.context.delete({
 #### Context: View (per-user)
 
 ```ts
+import AlchemystAI from '@alchemystai/sdk';
+
+const client = new AlchemystAI({
+    apiKey: process.env.ALCHEMYST_AI_API_KEY,
+});
 
 const view = await client.v1.context.view.retrieve();
 
@@ -106,6 +127,12 @@ const docs = await client.v1.context.view.docs();
 #### Context: Traces
 
 ```ts
+import AlchemystAI from '@alchemystai/sdk';
+
+const client = new AlchemystAI({
+    apiKey: process.env.ALCHEMYST_AI_API_KEY,
+});
+
 const { traces } = await client.v1.context.traces.list();
 
 await client.v1.context.traces.delete('traceId');
@@ -114,6 +141,12 @@ await client.v1.context.traces.delete('traceId');
 #### Organization: View Context
 
 ```ts
+import AlchemystAI from '@alchemystai/sdk';
+
+const client = new AlchemystAI({
+    apiKey: process.env.ALCHEMYST_AI_API_KEY,
+});
+
 const res = await client.v1.org.context.view({
   userIds: ['your_user_id', 'your_user_id_2'],
 });
