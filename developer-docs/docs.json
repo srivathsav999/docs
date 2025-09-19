@@ -18,11 +18,40 @@
         "icon": "book",
         "groups": [
           {
+            "group": "AI Memory",
+            "pages": []
+          },
+          {
+            "group": "AI Context",
+            "pages": [
+              "ai-context/what-is-ai-context",
+              "ai-context/why-you-need-ai-context",
+              "ai-context/how-alchemyst-works"
+            ]
+          },
+          {
             "group": "Getting started",
             "pages": [
               "index",
               "quickstart",
               "development"
+            ]
+          },
+          {
+            "group": "Sample Projects",
+            "pages": [
+              {
+                "group": "By our team",
+                "expanded": true,
+                "pages": [
+                  "example-projects/team/syllabai",
+                  "example-projects/team/zendocs"
+                ]
+              },
+              {
+                "group": "By our community",
+                "pages": []
+              }
             ]
           }
         ]
