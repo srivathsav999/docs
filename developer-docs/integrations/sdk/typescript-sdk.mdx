@@ -1,0 +1,120 @@
+---
+title: 'Typescript SDK'
+description: 'Get started with the Alchemyst Typescript SDK'
+---
+
+### Installation
+
+```bash
+npm install @alchemystai/sdk
+# or
+yarn add @alchemystai/sdk
+# or
+pnpm add @alchemystai/sdk
+# or
+bun add @alchemystai/sdk
+```
+
+### Authentication
+
+Set your API key via environment variable or pass it directly when initializing the client.
+
+- Recommended env var: `ALCHEMYST_AI_API_KEY`
+
+```bash
+export ALCHEMYST_AI_API_KEY="your_api_key_here"
+```
+
+### Quickstart
+
+```ts
+import AlchemystAI from '@alchemystai/sdk';
+
+const client = new AlchemystAI({
+  // If ALCHEMYST_AI_API_KEY is set, you can omit apiKey
+  // apiKey: process.env.ALCHEMYST_AI_API_KEY,
+});
+
+async function main() {
+  const res = await client.v1.context.view.retrieve();
+  console.log(res);
+}
+
+main().catch(console.error);
+```
+
+### Usage by Endpoint
+
+All methods return a promise you can `await`. Types are available out-of-the-box in TypeScript.
+
+#### Context: Add
+
+```ts
+await client.v1.context.add({
+  documents: [
+            {
+              content: 'The content of the document',
+            },
+          ],
+          context_type: 'resource',
+          source: 'web-upload',
+          scope: 'internal',
+          metadata: {
+            fileName: 'notes.txt',
+            fileType: 'text/plain',
+            lastModified: new Date().toISOString(),
+            fileSize: 1024,
+        },
+});
+```
+
+#### Context: Search
+
+```ts
+const { contexts } = await client.v1.context.search({
+        query: 'Your search query here',
+        similarity_threshold: 0.8,
+        minimum_similarity_threshold: 0.5,
+        scope: 'internal',
+        metadata: null,
+});
+
+console.log(contexts);
+```
+
+#### Context: Delete
+
+```ts
+await client.v1.context.delete({
+  source: 'web-upload',
+  user_id: 'your_user_id',          // optional
+  organization_id: 'your_organization_id',  // optional
+  by_doc: true,                // optional
+  by_id: false,                // optional
+});
+```
+
+#### Context: View (per-user)
+
+```ts
+
+const view = await client.v1.context.view.retrieve();
+
+const docs = await client.v1.context.view.docs();
+```
+
+#### Context: Traces
+
+```ts
+const { traces } = await client.v1.context.traces.list();
+
+await client.v1.context.traces.delete('traceId');
+```
+
+#### Organization: View Context
+
+```ts
+const res = await client.v1.org.context.view({
+  userIds: ['your_user_id', 'your_user_id_2'],
+});
+```

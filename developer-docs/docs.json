@@ -53,20 +53,53 @@
         ]
       },
       {
-        "tab": "SDKs",
+        "tab": "Integrations",
         "icon": "puzzle-piece",
         "groups": [
           {
-            "group": "Python",
+            "group": "Introduction",
             "pages": [
-              "sdks/python/introduction"
+              "integrations/introduction"
             ]
           },
           {
-            "group": "Typescript",
+            "group": "Alchemyst SDK",
             "pages": [
-              "sdks/typescript/introduction"
+              "integrations/sdk/python-sdk",
+              "integrations/sdk/typescript-sdk"
             ]
+          },
+          {
+            "group": "Third-party integrations",
+            "pages": [
+              {
+                "group": "LangChain",
+                "pages": [
+                  "integrations/third-party/langchain/python",
+                  "integrations/third-party/langchain/js"
+                ]
+              },
+              {
+                "group": "LLamaIndex",
+                "pages": [
+                  "integrations/third-party/llamaindex/python",
+                  "integrations/third-party/llamaindex/js"
+                ]
+              },
+              {
+                "group": "Agno",
+                "pages": [
+                  "integrations/third-party/agnoagi/python"
+                ]
+              },
+              {
+                "group": "AI SDK by Vercel",
+                "pages": [
+                  "integrations/third-party/aisdk/js"
+                ]
+              }
+            ],
+            "expanded": false
           }
         ]
       },
