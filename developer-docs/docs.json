@@ -15,6 +15,7 @@
     "tabs": [
       {
         "tab": "Guides",
+        "icon": "book",
         "groups": [
           {
             "group": "Getting started",
@@ -39,20 +40,12 @@
               "essentials/images",
               "essentials/reusable-snippets"
             ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/mcps",
-              "ai-tools/cursor",
-              "ai-tools/claude-desktop",
-              "ai-tools/visual-studio-code"
-            ]
           }
         ]
       },
       {
         "tab": "API reference",
+        "icon": "code",
         "groups": [
           {
             "group": "API documentation",
@@ -71,6 +64,38 @@
               "api-reference/endpoint/api/v1/context/view/docs/get",
               "api-reference/endpoint/api/v1/context/view/get",
               "api-reference/endpoint/api/v1/org/context/view/post"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SDKs",
+        "icon": "puzzle-piece",
+        "groups": [
+          {
+            "group": "Python",
+            "pages": [
+              "sdks/python/introduction"
+            ]
+          },
+          {
+            "group": "Typescript",
+            "pages": [
+              "sdks/typescript/introduction"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "MCPs",
+        "icon": "plug",
+        "groups": [
+          {
+            "group": "MCPs",
+            "pages": [
+              "mcps/claude-desktop",
+              "mcps/cursor",
+              "mcps/visual-studio-code"
             ]
           }
         ]
