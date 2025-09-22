@@ -1,7 +1,7 @@
 blank_issues_enabled: false
 contact_links:
   - name: 📣 Ask a question (Q&A / Troubleshooting)
-    url: https://github.com/OWNER/REPO/discussions
+    url: https://github.com/Alchemyst-ai/docs/discussions
     about: Please use Discussions for how‑to questions and general support.
   - name: 🧭 Documentation style guide
     url: https://example.com/STYLE_GUIDE_URL

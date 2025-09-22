@@ -1,0 +1,86 @@
+name: "🐞 Bug in documentation"
+title: "Bug: <short description>"
+labels:
+  - bug
+  - docs
+
+body:
+  - type: input
+    id: page
+    attributes:
+      label: "Page URL"
+      placeholder: "https://docs.example.com/path"
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: "Steps to reproduce / where it occurs"
+      placeholder: "1) Go to …\n2) Click …\n3) Observe …"
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected behavior/content"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: "Actual behavior/content"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: "Severity"
+      options:
+        - "Low (minor typo or cosmetic)"
+        - "Medium (confusing or misleading)"
+        - "High (blocks task or incorrect critical info)"
+    validations:
+      required: true
+
+  - type: input
+    id: versions
+    attributes:
+      label: "Version(s) affected (if applicable)"
+      placeholder: "e.g., v1.2, latest, all"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: "Environment (if UI-related)"
+      options:
+        - Any
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Mobile
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshots or recordings"
+      description: "Drag & drop images or paste links"
+    validations:
+      required: false
+
+  - type: textarea
+    id: proposed_fix
+    attributes:
+      label: "Proposed fix (optional)"
+      placeholder: "If you know how to fix this, describe it or link to a PR"
+    validations:
+      required: false
+

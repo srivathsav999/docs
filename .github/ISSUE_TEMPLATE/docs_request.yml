@@ -64,7 +64,7 @@ body:
     id: urls
     attributes:
       label: "Related or affected URL(s)"
-      placeholder: "https://docs.getalchemystai.com/"
+      placeholder: "https://docs.example.com/..."
     validations:
       required: false
       
