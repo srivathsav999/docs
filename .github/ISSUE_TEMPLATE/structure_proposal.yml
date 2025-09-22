@@ -1,0 +1,57 @@
+name: "🗺️ RFC: Information Architecture / Structure proposal"
+description: "Propose changes to navigation, taxonomy, landing pages, or cross-page structure"
+labels: [rfc, docs, needs triage]
+title: "RFC: <short summary>"
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for changes that affect multiple pages (navigation, IA, redirects, taxonomy). Include rationale and rollout plan.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: "Problem statement"
+      description: "What user pain or content smell are we addressing?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Proposal"
+      description: "Describe the changes (new sections, moved pages, renames, redirects, tags)."
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: "Impact assessment"
+      description: "Navigation, SEO, search relevance, inbound links, bookmarks, release notes"
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Alternatives considered"
+    validations:
+      required: false
+
+  - type: textarea
+    id: rollout
+    attributes:
+      label: "Rollout plan"
+      description: "Redirects, migration steps, version branching, communication"
+    validations:
+      required: true
+
+  - type: textarea
+    id: metrics
+    attributes:
+      label: "Success metrics"
+      description: "Define what you'll measure (e.g., reduced bounce rate, increased task completion)"
+    validations:
+      required: false
