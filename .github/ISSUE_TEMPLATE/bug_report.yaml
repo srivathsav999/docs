@@ -1,4 +1,5 @@
 name: "🐞 Bug in documentation"
+description: "Report a bug in documentation"
 title: "Bug: <short description>"
 labels:
   - bug
