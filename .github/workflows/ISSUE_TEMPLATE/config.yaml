@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+- name: 📣 Ask a question (Q&A / Troubleshooting)
+url: https://github.com/OWNER/REPO/discussions
+about: Please use Discussions for how‑to questions and general support.
+- name: 🧭 Documentation style guide
+url: https://example.com/STYLE_GUIDE_URL
+about: Review this before filing issues or opening PRs.
+- name: 🚨 Security issue
+url: https://example.com/SECURITY_REPORTING
+about: Please report security issues via the security policy, not a public issue.
