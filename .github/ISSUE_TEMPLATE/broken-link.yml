@@ -1,0 +1,51 @@
+name: "🔗 Broken link report (quick)"
+description: "Quick report for a single broken or redirected link"
+title: "Link: <page or anchor>"
+labels:
+  - bug
+  - docs
+  - link-check
+
+body:
+  - type: input
+    id: page
+    attributes:
+      label: "Page where the broken link appears"
+      placeholder: "https://docs.example.com/..."
+    validations:
+      required: true
+
+  - type: input
+    id: target
+    attributes:
+      label: "Target URL that is broken"
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: how
+    attributes:
+      label: "How did you find it?"
+      options:
+        - Clicking on the site
+        - External referrer
+        - Automated link checker
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: replacement
+    attributes:
+      label: "Suggested replacement URL (optional)"
+      placeholder: "https://... (if known)"
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Additional notes"
+    validations:
+      required: false
