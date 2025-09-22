@@ -1,44 +1,137 @@
-# Mintlify Starter Kit
+# Alchemyst Developer Documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+This directory contains the Alchemyst developer docs built with Mintlify.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Prerequisites
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+- Node.js 18+ recommended
+- [Mintlify CLI](https://www.npmjs.com/package/mint)
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+Install the CLI globally:
 
 ```
 npm i -g mint
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+## Local development
+
+Run the dev server :
+
+```
+cd developer-docs
+```
 
 ```
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
+Then open `http://localhost:3000`.
 
-## Publishing changes
+### Directory map
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+```
+developer-docs/
+├─ README.md
+├─ docs.json
+├─ index.mdx
+├─ quickstart.mdx
+├─ development.mdx
+├─ api-reference/
+│  ├─ introduction.mdx
+│  ├─ openapi.json
+│  └─ endpoint/api/v1/
+│     └─ context/
+│        ├─ add/post.mdx
+│        ├─ delete/post.mdx
+│        ├─ search/post.mdx
+│        ├─ traces/{traceId}/delete/delete.mdx
+│        └─ view/
+│           ├─ get.mdx
+│           └─ docs/get.mdx
+├─ ai-context/
+│  ├─ what-is-ai-context.mdx
+│  ├─ why-you-need-ai-context.mdx
+│  └─ how-alchemyst-works.mdx
+├─ essentials/
+│  ├─ code.mdx
+│  ├─ images.mdx
+│  ├─ markdown.mdx
+│  ├─ navigation.mdx
+│  ├─ reusable-snippets.mdx
+│  └─ settings.mdx
+├─ integrations/
+│  ├─ introduction.mdx
+│  ├─ sdk/
+│  │  ├─ typescript-sdk.mdx
+│  │  └─ python-sdk.mdx
+│  └─ third-party/
+│     ├─ agnoagi/python.mdx
+│     ├─ aisdk/js.mdx
+│     ├─ langchain/{js,python}.mdx
+│     └─ llamaindex/{js,python}.mdx
+├─ example-projects/
+│  ├─ introduction.mdx
+│  └─ team/
+│     ├─ syllabai.mdx
+│     └─ zendocs.mdx
+├─ mcps/
+│  ├─ introduction.mdx
+│  ├─ mcps.mdx
+│  ├─ cursor.mdx
+│  ├─ claude-desktop.mdx
+│  └─ visual-studio-code.mdx
+├─ snippets/
+│  └─ snippet-intro.mdx
+├─ images/
+│  └─ ...
+├─ logo/
+│  └─ ...
+├─ action.js
+└─ ctx.js
+```
 
-## Need help?
+## Contributors guide
 
-### Troubleshooting
+### 1) Setup
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+- Fork and clone the repo
+- Create a feature branch from `main`: `git checkout -b docs/your-topic`
+- Install Mintlify CLI (see prerequisites) and run locally with `mint dev`
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
-- [Mintlify community](https://mintlify.com/community)
+### 2) MDX quick tips
+
+- Check how mdx works you can see some examples in `/essentials`
+
+### 3) Structure and navigation
+
+- Place new pages in the most relevant directory (e.g., `ai-context/`, `integrations/`).
+- For API docs, follow `api-reference/endpoint/api/v1/...` folder conventions.
+- Update `docs.json` to surface new sections/pages in the sidebar navigation.
+
+### 4) Quality checks
+
+- Run: `mint dev` and verify the page renders, links work, and images load
+- Lint/content sanity: check for broken links, heading hierarchy, and typos
+- Keep line length readable; wrap long lines and avoid trailing spaces
+
+### 5) Commit and PR
+
+- Commit style: `docs(scope): short summary` (e.g., `docs(ai-context): add diagram`)
+- When adding files, update the Directory map in this README (`developer-docs/README.md`).
+- Push your branch and open a PR to `main`
+- In the PR description: include screenshots of visual changes and a brief summary
+- Request review from a maintainer; address feedback promptly
+
+### 6) After merge
+
+- If everything goes well and your PR is merged to `main`, you will see it at `https://docs.getalchemystai.com/`.
+- If issues arise, submit a follow-up PR with focused fixes
+
+</br>
+ 
+ Note: Before pushing or opening a PR, pull the latest changes from `main`.
+
+## Resources
+
+- Mintlify docs: https://mintlify.com/docs
+- Mintlify community: https://mintlify.com/community
