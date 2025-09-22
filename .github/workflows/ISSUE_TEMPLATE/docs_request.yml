@@ -1,0 +1,105 @@
+name: "✍️ Docs request / content gap"
+description: "Request new documentation or improvements to existing content"
+labels: [type:request, docs, needs triage]
+title: "Request: <short summary>"
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tell us what content is needed and who it's for. Check the style guide and search existing docs first.
+        
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: "Request type"
+      multiple: false
+      options:
+        - New page/section
+        - Update existing page
+        - Deprecate/remove content
+        - Add examples/tutorials
+        - Improve SEO/metadata
+        - Other
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: area
+    attributes:
+      label: "Area"
+      multiple: true
+      options:
+        - Guides
+        - Tutorials
+        - API Reference
+        - Concepts
+        - Release Notes / Changelog
+        - Navigation / Sidebar
+        - Search
+        - Landing Pages
+        - Style Guide
+        - Translations / Localization
+    validations:
+      required: true
+      
+  - type: textarea
+    id: user_story
+    attributes:
+      label: "Problem / user story"
+      description: "Who is the audience and what task or question do they have?"
+      placeholder: "As a <role>, I want to <task> so that <outcome>."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: scope
+    attributes:
+      label: "Proposed scope / outline"
+      description: "Bullet list of sections, headings, or example code needed"
+    validations:
+      required: true
+      
+  - type: input
+    id: urls
+    attributes:
+      label: "Related or affected URL(s)"
+      placeholder: "https://docs.getalchemystai.com/"
+    validations:
+      required: false
+      
+  - type: textarea
+    id: references
+    attributes:
+      label: "References"
+      description: "Links to specs, issues, PRs, internal notes, or external sources"
+    validations:
+      required: 
+      
+  - type: dropdown
+    id: versioning
+    attributes:
+      label: "Versioning impact"
+      options:
+      - Applies to all versions
+      - New version only
+      - Needs backport to older versions
+      - Not applicable
+    validations:
+      required: true
+      
+  - type: input
+    id: due
+    attributes:
+      label: "Target date / urgency (optional)"
+      placeholder: "e.g., 2025-10-15 or 'ASAP'"
+    validations:
+      required: false
+      
+  - type: textarea
+    id: done
+    attributes:
+      label: "Definition of done / acceptance criteria"
+      description: "What must be true for this to be considered complete?"
+    validations:
+      required: true
