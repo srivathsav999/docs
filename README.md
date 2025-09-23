@@ -46,9 +46,8 @@ Our documentation is primarily written in **MDX**, allowing us to combine the re
 This documentation site is built with modern, developer-friendly technologies:
 
 * **[MDX](https://mdxjs.com/):** For writing content that combines Markdown and JSX.
-* **[React.js](https://react.dev/):** For building interactive UI components within the documentation.
-* **[Next.js](https://nextjs.org/):** As the framework for our static and server-rendered documentation site.
 * **[Node.js](https://nodejs.org/):** For the development environment and server-side logic.
+* **[Mintlify CLI](https://www.npmjs.com/package/mint)**
 
 ---
 
@@ -131,38 +130,68 @@ To get a local copy up and running, follow these simple steps.
 
 ### Installation
 
-1.  Clone the repo:
-    ```sh
-    git clone [https://github.com/Alchemyst-ai/docs.git](https://github.com/Alchemyst-ai/docs.git)
-    ```
-2.  Navigate to the project directory:
-    ```sh
-    cd docs
-    ```
-3.  Install NPM packages:
-    ```sh
-    npm install
-    ```
-4.  Run the development server:
-    ```sh
-    npm run dev
-    ```
+Install the CLI globally:
+
+```
+npm i -g mint
+```
+
+## Local development
+
+Run the dev server :
+
+```
+cd developer-docs
+```
+
+```
+mint dev
+```
+
+Then open `http://localhost:3000`.
 
 ---
 
 ## 🧑‍💻 Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+### 1) Setup
 
-To ensure a welcoming and inclusive environment, we have a **Code of Conduct** that all contributors are expected to follow. Please read it [here](https://github.com/Alchemyst-ai/docs/blob/main/.github/CODE_OF_CONDUCT.md).
+- Fork and clone the repo
+- Create a feature branch from `main`: `git checkout -b docs/your-topic`
+- Install Mintlify CLI (see prerequisites) and run locally with `mint dev`
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+### 2) MDX quick tips
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+- Check how mdx works you can see some examples in `/essentials`
+
+### 3) Structure and navigation
+
+- Place new pages in the most relevant directory (e.g., `ai-context/`, `integrations/`).
+- For API docs, follow `api-reference/endpoint/api/v1/...` folder conventions.
+- Update `docs.json` to surface new sections/pages in the sidebar navigation.
+
+### 4) Quality checks
+
+- Run: `mint dev` and verify the page renders, links work, and images load
+- Lint/content sanity: check for broken links, heading hierarchy, and typos
+- Keep line length readable; wrap long lines and avoid trailing spaces
+
+### 5) Commit and PR
+
+- Commit style: `docs(scope): short summary` (e.g., `docs(ai-context): add diagram`)
+- When adding files, update the Directory map in this README (`developer-docs/README.md`).
+- Push your branch and open a PR to `main`
+- In the PR description: include screenshots of visual changes and a brief summary
+- Request review from a maintainer; address feedback promptly
+
+### 6) After merge
+
+- If everything goes well and your PR is merged to `main`, you will see it at `https://docs.getalchemystai.com/`.
+- If issues arise, submit a follow-up PR with focused fixes
+
+</br>
+ 
+ Note: Before pushing or opening a PR, pull the latest changes from `main`.
 
 ---
 
