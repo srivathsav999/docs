@@ -32,15 +32,6 @@ Our documentation is primarily written in **MDX**, allowing us to combine the re
 
 ---
 
-## 🚀 Features
-
-* **Comprehensive Guides:** Detailed walkthroughs for getting started and mastering advanced concepts.
-* **API Reference:** Fully documented endpoints and models for seamless integration.
-* **Interactive Examples:** Live code blocks and demos to see our tools in action.
-* **Centralized Knowledge:** One place to find all official information about the Alchemyst-ai ecosystem.
-
----
-
 ## 📦 Tech Stack
 
 This documentation site is built with modern, developer-friendly technologies:
