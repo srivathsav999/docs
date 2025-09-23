@@ -188,6 +188,6 @@ Then open `http://localhost:3000`.
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the CC BY-SA 4.0 License. See `LICENSE` for more information.
 
 ---
