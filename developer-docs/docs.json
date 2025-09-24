@@ -33,8 +33,13 @@
             "group": "Getting started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Contributions",
+            "pages": [
+              "contributing"
             ]
           },
           {
@@ -190,7 +195,7 @@
       "x": "https://x.com/getalchemyst",
       "github": "https://github.com/alchemyst-ai",
       "linkedin": "https://linkedin.com/company/alchemystai",
-      "discord" : "https://discord.gg/tkx5jpcr"
+      "discord": "https://discord.gg/tkx5jpcr"
     }
   }
 }
