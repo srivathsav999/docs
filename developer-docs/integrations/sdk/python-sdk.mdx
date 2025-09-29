@@ -21,6 +21,8 @@ uv add alchemystai
 
 ## Usage
 
+## Context: Add
+
 ```python
 import os
 from alchemyst_ai import AlchemystAI
@@ -29,7 +31,46 @@ client = AlchemystAI(
     api_key=os.environ.get("ALCHEMYST_AI_API_KEY"),  # This is the default and can be omitted
 )
 
-response = client.v1.context.add()
+# Build documents array
+docs_array = []
+
+docs_array.append({
+    "content": "files content",
+    "metadata": {   # optional
+        "filename": "name of the file",
+        "filetype": "pdf/txt/json"
+    }
+})
+
+# Add documents to context
+response = client.v1.context.add(
+    documents=docs_array,
+    source="source of context data",
+    context_type="resource",   # one of: resource | conversation | instruction
+    scope="internal",          # one of: internal | external
+    metadata={
+        "fileName": "file_name",
+        "fileType": "type",
+        "lastModified": "timestamp",
+        "fileSize": 1234,   # number
+    }
+)
+```
+
+## Context: Search
+
+```python
+from alchemyst_ai import AlchemystAI
+
+client = AlchemystAI()
+
+results = client.v1.context.search(
+    query="your search query",
+    similarity_threshold=0.8,
+    minimum_similarity_threshold=0.5,
+    scope="internal",   # internal | external
+    metadata=None        # None if no metadata, otherwise a dict
+)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -52,7 +93,12 @@ client = AsyncAlchemystAI(
 
 
 async def main() -> None:
-    response = await client.v1.context.add()
+    response = await client.v1.context.add(
+        documents=[{"content": "files content"}],
+        source="source of context data",
+        context_type="resource",
+        scope="internal",
+    )
 
 
 asyncio.run(main())
