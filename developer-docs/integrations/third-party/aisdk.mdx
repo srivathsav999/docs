@@ -1,0 +1,62 @@
+---
+title: 'Vercel AI SDK'
+description: "Integrate Alchemyst's memory with Vercel AI SDK"
+icon: "js"
+---
+## About Vercel AI SDK
+[Vercel AI SDK](https://ai-sdk.dev) is an open-source toolkit from the team behind Vercel and Next.js. It provides a **unified developer experience** for building AI-powered applications, including:
+
+- Easy integration with multiple model providers (OpenAI, Anthropic, etc.)
+- Support for **streaming responses** for real-time chat UIs
+- Type-safe APIs with excellent **TypeScript support**
+- Built-in support for **agents, tools, and structured outputs**
+- Ready-to-use React/Next.js hooks for managing conversation state
+
+By using the AI SDK, you can avoid handling low-level APIs directly and focus on creating seamless AI-driven experiences in your app.
+
+---
+
+## How It Works
+
+The AI SDK is split into modular packages:
+
+- **Core API**: A unified way to call LLMs and handle outputs
+- **Provider Adapters**: Packages like `@ai-sdk/openai` let you plug in specific providers
+- **UI Utilities**: Hooks such as `useChat` make it easy to build interactive experiences
+- **Tooling / Agents**: Support for calling external APIs or chaining workflows
+
+This modular design means you can start small and scale up to more complex AI flows as your application grows.
+
+## When to Use Vercel AI SDK
+
+You should consider using the SDK if:
+- You want to build chatbots, assistants, or agent-like applications quickly
+- You need real-time streaming responses from your models
+- You want cross-provider flexibility without rewriting core logic
+- You prefer type safety and well-structured APIs
+
+For more details, check out the official [**Vercel AI SDK documentation**](https://ai-sdk.dev/docs/introduction)
+
+<Tabs>
+<Tab>
+## Example: MCP Client Setup
+
+The snippet below shows how to set up an **MCP (Model Context Protocol) Client** using Vercel's AI SDK. This client communicates with your server via SSE (Server-Sent Events) and can be configured with custom headers for authentication.
+
+```ts aiSdkMcpSetup.ts
+import { experimental_createMCPClient as createMCPClient } from 'ai';
+
+const mcpClient = await createMCPClient({
+  transport: {
+    type: 'sse',
+    url: 'https://mcp.getalchemystai.com/sse',
+
+    // optional: configure HTTP headers, e.g. for authentication
+    headers: {
+      Authorization: 'Bearer YOUR_ALCHEMYST_AI_API_KEY',
+    },
+  },
+});
+```
+</Tab>
+</Tabs>
