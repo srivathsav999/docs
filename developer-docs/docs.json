@@ -62,31 +62,6 @@
         ]
       },
       {
-        "tab": "API reference",
-        "icon": "code",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/api/v1/context/add/post",
-              "api-reference/endpoint/api/v1/context/delete/post",
-              "api-reference/endpoint/api/v1/context/search/post",
-              "api-reference/endpoint/api/v1/context/traces/get",
-              "api-reference/endpoint/api/v1/context/traces/{traceId}/delete/delete",
-              "api-reference/endpoint/api/v1/context/view/docs/get",
-              "api-reference/endpoint/api/v1/context/view/get",
-              "api-reference/endpoint/api/v1/org/context/view/post"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Integrations",
         "icon": "puzzle-piece",
         "groups": [
@@ -138,6 +113,32 @@
               "mcps/claude-desktop",
               "mcps/cursor",
               "mcps/visual-studio-code"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API reference",
+        "groups": [
+          {
+            "group": "API documentation",
+            "pages": [
+              "api-reference/introduction"
+            ]
+          },
+          {
+            "group": "Endpoint examples",
+            "pages": [
+              "api-reference/endpoint/api/v1/context/add/post",
+              "api-reference/endpoint/api/v1/context/delete/post",
+              "api-reference/endpoint/api/v1/context/memory/add/post",
+              "api-reference/endpoint/api/v1/context/memory/delete/post",
+              "api-reference/endpoint/api/v1/context/search/post",
+              "api-reference/endpoint/api/v1/context/traces/get",
+              "api-reference/endpoint/api/v1/context/traces/{traceId}/delete/delete",
+              "api-reference/endpoint/api/v1/context/view/docs/get",
+              "api-reference/endpoint/api/v1/context/view/get",
+              "api-reference/endpoint/api/v1/org/context/view/post"
             ]
           }
         ]
