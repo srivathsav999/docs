@@ -106,30 +106,20 @@
           {
             "group": "Third-party integrations",
             "pages": [
+              "integrations/third-party/aisdk",
+              "integrations/third-party/agnoagi",
               {
-                "group": "LangChain",
+                "group": "LangChain (coming soon)",
                 "pages": [
                   "integrations/third-party/langchain/python",
                   "integrations/third-party/langchain/js"
                 ]
               },
               {
-                "group": "LLamaIndex",
+                "group": "LLamaIndex (coming soon)",
                 "pages": [
                   "integrations/third-party/llamaindex/python",
                   "integrations/third-party/llamaindex/js"
-                ]
-              },
-              {
-                "group": "Agno",
-                "pages": [
-                  "integrations/third-party/agnoagi/python"
-                ]
-              },
-              {
-                "group": "AI SDK by Vercel",
-                "pages": [
-                  "integrations/third-party/aisdk/js"
                 ]
               }
             ],
