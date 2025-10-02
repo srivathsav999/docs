@@ -84,6 +84,14 @@ When contributing to our documentation, please follow these guidelines:
 - Test all **code snippets**
 - Ensure all **links are working**
 
+### Commit Messages
+Please follow [Conventional Commits](https://www.conventionalcommits.org/) format:
+- `fix: ...` → for bug fixes  
+- `docs: ...` → for documentation changes  
+- `feat: ...` → for new features  
+- `chore: ...` → for maintenance tasks  
+
+
 ## Custom ports
 
 By default, Mintlify uses `port 3000`. You can customize the port Mintlify runs on by using the `--port` flag. For example, to run Mintlify on `port 3333`, use this command:
@@ -94,7 +102,7 @@ mint dev --port 3333
 
 If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
 
-```md
+```
 Port 3000 is already in use. Trying 3001 instead.
 ```
 
@@ -103,7 +111,8 @@ Port 3000 is already in use. Trying 3001 instead.
 Please note that each CLI release is associated with a specific version of Mintlify. If your local preview does not align with the production version, please update the CLI:
 
 ```bash
-npm mint update
+npm update -g mint
+
 ```
 
 ## Validating links
@@ -131,7 +140,7 @@ We suggest using extensions on your IDE to recognize and format MDX. If you're a
 <AccordionGroup>
   <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
 
-    This may be due to an outdated version of node. Try the following:
+    This may be due to an outdated version of Node.js. Try the following:
     1. Remove the currently-installed version of the CLI: `npm remove -g mint`
     2. Upgrade to Node v19 or higher.
     3. Reinstall the CLI: `npm i -g mint`
@@ -155,7 +164,7 @@ Here's what happens after you submit your PR:
 4. **Merge**: Once approved, your PR will be merged into the main branch
 
 <Frame>
-  <img src="/images/pr-merged.png" alt="Screenshot of a deployment confirmation message that says All checks have passed." style={{ borderRadius: '0.5rem' }} />
+  <img src="/images/pr-merged.png" alt="Screenshot showing a successfully merged Pull Request." style={{ borderRadius: '0.5rem' }} />
 </Frame>
 
 ## Where to Ask for Help
