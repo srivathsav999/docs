@@ -1,40 +1,92 @@
 ---
 title: 'Contributing'
-description: 'Contributing to this documentation'
+description: 'Guide for contributing to our documentation'
 ---
 
+## Introduction
+
+Welcome to our documentation contribution guide! We're excited that you're interested in helping improve our documentation. This guide will walk you through everything you need to know to make your first contribution.
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
 <Info>
-  **Prerequisites**:
+  **Required Tools & Accounts**:
   - Node.js version 19 or higher
+  - Git installed on your machine
+  - A GitHub account
   - A docs repository with a `docs.json` file
+  - Code editor (we recommend VS Code)
 </Info>
 
-Follow these steps to install and run Mintlify on your operating system.
+## How to Contribute
+
+Follow these steps to make your first contribution:
 
 <Steps>
-<Step title="Install the Mintlify CLI">
+<Step title="Fork and Clone">
+1. Fork the repository by clicking the 'Fork' button on GitHub
+2. Clone your fork locally:
+```bash
+git clone https://github.com/YOUR-USERNAME/docs.git
+cd docs
+```
+</Step>
 
+<Step title="Set Up Development Environment">
+Install the Mintlify CLI:
 ```bash
 npm i -g mint
 ```
 </Step>
 
-<Step title="Preview locally">
+<Step title="Create a Branch">
+Create a new branch for your changes:
+```bash
+git checkout -b feature/your-feature-name
+```
+Name your branch something descriptive, like `feature/update-api-docs` or `fix/broken-links`.
+</Step>
 
-Navigate to your docs directory where your `docs.json` file is located, and run the following command:
-
+<Step title="Make Changes">
+Navigate to your docs directory where your `docs.json` file is located, and start the development server:
 ```bash
 mint dev
 ```
+A local preview will be available at `http://localhost:3000`.
 
-A local preview of your documentation will be available at `http://localhost:3000`.
+Make your changes and test them locally.
+</Step>
 
+<Step title="Commit Changes">
+Stage and commit your changes:
+```bash
+git add .
+git commit -m "Description of your changes"
+```
+</Step>
+
+<Step title="Submit Pull Request">
+1. Push your changes to your fork
+2. Go to the original repository and create a Pull Request
+3. Follow the PR template and provide a clear description of your changes
 </Step>
 </Steps>
 
+## Code Style & Standards
+
+When contributing to our documentation, please follow these guidelines:
+
+- Use clear, **concise** language
+- Follow our **MDX formatting** standards
+- Include **examples** where appropriate
+- Test all **code snippets**
+- Ensure all **links are working**
+
 ## Custom ports
 
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. For example, to run Mintlify on port 3333, use this command:
+By default, Mintlify uses `port 3000`. You can customize the port Mintlify runs on by using the `--port` flag. For example, to run Mintlify on `port 3333`, use this command:
 
 ```bash
 mint dev --port 3333
@@ -92,3 +144,25 @@ We suggest using extensions on your IDE to recognize and format MDX. If you're a
 </AccordionGroup>
 
 Curious about what changed in the latest CLI version? Check out the [CLI changelog](https://www.npmjs.com/package/mintlify?activeTab=versions).
+
+## Review Process
+
+Here's what happens after you submit your PR:
+
+1. **Initial Check**: Automated checks will run to ensure your changes meet our basic requirements
+2. **Review**: A maintainer will review your PR within 1-2 business days
+3. **Feedback**: You may receive feedback requesting changes
+4. **Merge**: Once approved, your PR will be merged into the main branch
+
+<Frame>
+  <img src="/images/pr-merged.png" alt="Screenshot of a deployment confirmation message that says All checks have passed." style={{ borderRadius: '0.5rem' }} />
+</Frame>
+
+## Where to Ask for Help
+
+Need help? We're here to support you:
+
+- **Discord Community**: Join our [Discord server](https://discord.gg/QrQTFsTC) for real-time help
+- **GitHub Issues**: Search existing [issues](https://github.com/Alchemyst-ai/docs/issues) or create a new one
+
+Remember, no question is too small. We're happy to help you contribute!
