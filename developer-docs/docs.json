@@ -84,7 +84,7 @@
               "integrations/third-party/aisdk",
               "integrations/third-party/agnoagi",
               {
-                "group": "LangChain (coming soon)",
+                "group": "LangChain",
                 "pages": [
                   "integrations/third-party/langchain/python",
                   "integrations/third-party/langchain/js"

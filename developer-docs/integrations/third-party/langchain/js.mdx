@@ -3,4 +3,163 @@ title: 'Langchain JS Integration'
 description: "Integrate Alchemyst's memory with Langchain in JS/TS"
 icon: "js"
 ---
-Coming soon
+
+## Why use LangChain with Alchemyst AI?
+
+[LangChain](https://js.langchain.com/) is a popular open-source framework for building context-aware AI applications in JavaScript and TypeScript. It lets you chain together LLMs, retrievers, memory, and tools to create powerful, production-ready AI agents.
+
+However, LLMs alone are "forgetful"—they don't remember previous conversations, business rules, or your proprietary data. This is where **context** becomes critical. Without context, AI agents give generic, disconnected answers. With context, they become knowledgeable partners that can reason, personalize, and act based on your data and workflows. (See [What is AI Context?](/ai-context/what-is-ai-context) and [Why you need AI Context?](/ai-context/why-you-need-ai-context))
+
+**Alchemyst AI's LangChain integration** solves this by providing a plug-and-play retriever that connects your LangChain agents to the context stored in Alchemyst's memory architecture. This means your agents can:
+
+- Instantly access relevant documents, files, and knowledge bases.
+- Maintain both short-term and long-term memory across sessions.
+- Personalize responses and follow complex workflows using your proprietary data.
+- Avoid repetitive questions and deliver context-aware outputs.
+
+With Alchemyst, you simply upload your data, and the retriever handles context injection for you—no need to build your own memory system. (See [How Alchemyst Works](/ai-context/how-alchemyst-works))
+
+## Installation
+
+To get started with the Alchemyst Langchain Integration, install the `@alchemystai/langchain-js` package from npm.
+
+<CodeGroup>
+```sh npm
+npm i @alchemystai/langchain-js
+```
+
+```sh yarn
+yarn add @alchemystai/langchain-js
+```
+
+```sh pnpm
+pnpm add @alchemystai/langchain-js
+```
+
+```sh bun
+bun add @alchemystai/langchain-js
+```
+</CodeGroup>
+
+<Card icon="github" href="https://github.com/alchemyst-ai/langchain-js">See Source</Card>
+
+> **NOTE**: In accordance with the release cycle of LangChain 1.0 release, we have decided to maintain the project separately, as discussed with the maintainers of Langchain Community as well.
+
+## Usage
+
+### As Retriever
+
+The `AlchemystRetriever` class can be used like any other Retriever class in LangChain. See the example below:
+
+```typescript retriever.ts
+import { AlchemystRetriever } from "@alchemystai/langchain-js";
+import { StringOutputParser } from "@langchain/core/output_parsers";
+import { RunnableSequence } from "@langchain/core/runnables";
+import dotenv from "dotenv";
+// filepath: /Users/anuran/Alchemyst/integrations/playground/example.ts
+
+dotenv.config();
+
+// Instantiate the retriever with your API key and optional config
+const retriever = new AlchemystRetriever({
+  apiKey: process.env.ALCHEMYST_AI_API_KEY!,
+  similarityThreshold: 0.8,
+  minimumSimilarityThreshold: 0.5,
+  scope: "internal"
+});
+
+// Example: Use the retriever in a LangChain pipeline
+async function main() {
+  // Create a simple pipeline that retrieves documents and outputs their content
+  const pipeline = RunnableSequence.from([
+    async (input: string) => {
+      const docs = await retriever.getRelevantDocuments(input);
+      return docs.map(doc => doc.pageContent).join("\n---\n");
+    },
+    new StringOutputParser()
+  ]);
+
+  const query = "Tell me about Quantum Entanglement"; // Put your query here
+  const result = await pipeline.invoke(query);
+
+  console.log("Retrieved Documents:\n", result);
+}
+
+main().catch(console.error);
+```
+
+### As Memory
+
+The `AlchemystMemory` class can be used like any other Memory class in LangChain as well. See the example below:
+
+```typescript memory.ts
+import { AlchemystMemory } from "@alchemystai/langchain-js";
+import { ChatPromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts";
+import { RunnablePassthrough, RunnableSequence } from "@langchain/core/runnables";
+import { ChatOpenAI } from "@langchain/openai";
+import { randomUUID } from "crypto";
+
+async function main() {
+  console.log("Boot: starting test with env:", {
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY ? "set" : "missing",
+    ALCHEMYST_AI_API_KEY: process.env.ALCHEMYST_AI_API_KEY ? "set" : "missing",
+  });
+  const sessionId = randomUUID();
+  console.log("Session:", sessionId);
+
+  const memory = new AlchemystMemory({
+    apiKey: process.env.ALCHEMYST_AI_API_KEY || "YOUR_ALCHEMYST_API_KEY",
+    sessionId,
+  });
+
+  const model = new ChatOpenAI({
+    model: "gpt-5-nano",
+  });
+
+  // Create a prompt template with message history
+  const prompt = ChatPromptTemplate.fromMessages([
+    ["system", "You are a helpful AI assistant. Have a conversation with the human, using the chat history for context."],
+    new MessagesPlaceholder("history"),
+    ["human", "{input}"],
+  ]);
+
+  // Create the chain using LCEL (LangChain Expression Language)
+  const chain = RunnableSequence.from([
+    RunnablePassthrough.assign({
+      history: async () => {
+        const memoryVars = await memory.loadMemoryVariables({});
+        return memoryVars.history || [];
+      },
+    }),
+    prompt,
+    model,
+  ]);
+
+  console.log("Invoke #1 ->");
+  const first = await chain.invoke({ input: "Hi, my name is Anuran. Anuran is from Bangalore." });
+
+  // Save to memory
+  await memory.saveContext(
+    { input: "Hi, my name is Anuran. Anuran is from Bangalore." },
+    { output: first.content }
+  );
+
+  console.log("First reply:", first.content);
+
+  console.log("Invoke #2 ->");
+  const second = await chain.invoke({ input: "Who is Anuran? Where is Anuran from?" });
+
+  // Save to memory
+  await memory.saveContext(
+    { input: "Who is Anuran? Where is Anuran from?" },
+    { output: second.content }
+  );
+
+  console.log("Second reply:", second.content);
+}
+
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
+```
