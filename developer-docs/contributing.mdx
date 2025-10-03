@@ -1,40 +1,106 @@
 ---
 title: 'Contributing'
-description: 'Contributing to this documentation'
+description: 'Guide for contributing to our documentation'
 ---
 
+## Introduction
+
+Welcome to our documentation contribution guide! We're excited that you're interested in helping improve our documentation. This guide will walk you through everything you need to know to make your first contribution.
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
 <Info>
-  **Prerequisites**:
+  **Required Tools & Accounts**:
   - Node.js version 19 or higher
+  - npm or yarn
+  - Git installed on your machine
+  - A GitHub account
   - A docs repository with a `docs.json` file
+  - Code editor (we recommend VS Code)
 </Info>
 
-Follow these steps to install and run Mintlify on your operating system.
+## How to Contribute
+
+Follow these steps to make your first contribution:
 
 <Steps>
-<Step title="Install the Mintlify CLI">
+<Step title="Fork and Clone">
+1. Fork the repository by clicking the 'Fork' button on GitHub
+2. Clone your fork locally:
+```bash
+git clone https://github.com/YOUR-USERNAME/docs.git
+cd docs
+```
+</Step>
 
+<Step title="Set Up Development Environment">
+Install the Mintlify CLI:
 ```bash
 npm i -g mint
 ```
 </Step>
 
-<Step title="Preview locally">
 
-Navigate to your docs directory where your `docs.json` file is located, and run the following command:
-
+<Step title="Make Changes">
+Navigate to your developer-docs directory, and start the development server:
 ```bash
+cd developer-docs
 mint dev
 ```
+A local preview will be available at `http://localhost:3000`.
 
-A local preview of your documentation will be available at `http://localhost:3000`.
+Make your changes and test them locally.
+</Step>
 
+<Step title="Commit Changes">
+Stage and commit your changes:
+```bash
+git add .
+git commit -m "Description of your changes"
+```
+</Step>
+
+<Step title="Submit Pull Request">
+1. Push your changes to your fork
+2. Go to the original repository and create a Pull Request
+3. Follow the PR template and provide a clear description of your changes
 </Step>
 </Steps>
 
+### MDX Quick Tips
+- Check how MDX works. You can see examples in `/essentials`
+
+### Structure & Navigation
+
+- Place new pages in the most relevant directory (e.g., `ai-context/`, `integrations/`).
+- For API docs, follow `api-reference/endpoint/api/v1/...` folder conventions.
+- Update `docs.json` to surface new sections/pages in the sidebar navigation.
+
+
+### Quality Checks
+- **Run**: `mint dev` and verify the page renders, links work, and images load
+- **Lint/content sanity**: check for broken links, heading hierarchy, and typos
+- **Keep line length readable**; wrap long lines and avoid trailing spaces
+
+### Commit and PR
+- Commit style: `docs(scope): short summary` (e.g., `docs(ai-context): add diagram`)
+- When adding files, update the Directory map in this README (`developer-docs/README.md`).
+- Push your branch and open a PR to `main`
+- In the PR description: **include screenshots** of visual changes and a brief summary
+- Request review from a maintainer; address feedback promptly
+
+Please follow [Conventional Commits](https://www.conventionalcommits.org/) format:
+- `fix: ...` → for bug fixes  
+- `docs: ...` → for documentation changes  
+- `feat: ...` → for new features  
+- `chore: ...` → for maintenance tasks  
+
+
 ## Custom ports
 
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. For example, to run Mintlify on port 3333, use this command:
+By default, Mintlify uses `port 3000`. You can customize the port Mintlify runs on by using the `--port` flag. For example, to run Mintlify on `port 3333`, use this command:
 
 ```bash
 mint dev --port 3333
@@ -42,7 +108,7 @@ mint dev --port 3333
 
 If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
 
-```md
+```
 Port 3000 is already in use. Trying 3001 instead.
 ```
 
@@ -51,7 +117,7 @@ Port 3000 is already in use. Trying 3001 instead.
 Please note that each CLI release is associated with a specific version of Mintlify. If your local preview does not align with the production version, please update the CLI:
 
 ```bash
-npm mint update
+npm update -g mint
 ```
 
 ## Validating links
@@ -79,7 +145,7 @@ We suggest using extensions on your IDE to recognize and format MDX. If you're a
 <AccordionGroup>
   <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
 
-    This may be due to an outdated version of node. Try the following:
+    This may be due to an outdated version of Node.js. Try the following:
     1. Remove the currently-installed version of the CLI: `npm remove -g mint`
     2. Upgrade to Node v19 or higher.
     3. Reinstall the CLI: `npm i -g mint`
@@ -92,3 +158,28 @@ We suggest using extensions on your IDE to recognize and format MDX. If you're a
 </AccordionGroup>
 
 Curious about what changed in the latest CLI version? Check out the [CLI changelog](https://www.npmjs.com/package/mintlify?activeTab=versions).
+
+## Review Process
+
+Here's what happens after you submit your PR:
+
+1. **Initial Check**: Automated checks will run to ensure your changes meet our basic requirements
+2. **Review**: A maintainer will review your PR within 1-2 business days
+3. **Feedback**: You may receive feedback requesting changes
+4. **Merge**: merged into the `main` branch.  
+Once deployed, you can view your changes at [docs.getalchemystai.com](https://docs.getalchemystai.com/).  
+If issues arise, submit a follow-up PR with focused fixes.
+
+
+<Frame>
+  <img src="/images/pr-merged.png" alt="Screenshot showing a successfully merged Pull Request." style={{ borderRadius: '0.5rem' }} />
+</Frame>
+
+## Where to Ask for Help
+
+Need help? We're here to support you:
+
+- **Discord Community**: Join our [Discord server](https://discord.gg/GATkRyzt) for real-time help
+- **GitHub Issues**: Search existing [issues](https://github.com/Alchemyst-ai/docs/issues) or create a new one
+
+Remember, no question is too small. We're happy to help you contribute!
