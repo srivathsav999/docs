@@ -99,6 +99,12 @@
               }
             ],
             "expanded": false
+          },
+          {
+            "group": "LLM-Proxy",
+            "pages": [
+              "integrations/llm-proxy/anthropic"
+            ]
           }
         ]
       },
