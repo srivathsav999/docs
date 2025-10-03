@@ -103,7 +103,8 @@
           {
             "group": "LLM-Proxy",
             "pages": [
-              "integrations/llm-proxy/anthropic"
+              "integrations/llm-proxy/anthropic",
+              "integrations/llm-proxy/openai"
             ]
           }
         ]
