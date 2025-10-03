@@ -14,6 +14,7 @@ Before you begin, ensure you have the following:
 <Info>
   **Required Tools & Accounts**:
   - Node.js version 19 or higher
+  - npm or yarn
   - Git installed on your machine
   - A GitHub account
   - A docs repository with a `docs.json` file
@@ -41,17 +42,11 @@ npm i -g mint
 ```
 </Step>
 
-<Step title="Create a Branch">
-Create a new branch for your changes:
-```bash
-git checkout -b feature/your-feature-name
-```
-Name your branch something descriptive, like `feature/update-api-docs` or `fix/broken-links`.
-</Step>
 
 <Step title="Make Changes">
-Navigate to your docs directory where your `docs.json` file is located, and start the development server:
+Navigate to your developer-docs directory, and start the development server:
 ```bash
+cd developer-docs
 mint dev
 ```
 A local preview will be available at `http://localhost:3000`.
@@ -74,17 +69,28 @@ git commit -m "Description of your changes"
 </Step>
 </Steps>
 
-## Code Style & Standards
+### MDX Quick Tips
+- Check how MDX works. You can see examples in `/essentials`
 
-When contributing to our documentation, please follow these guidelines:
+### Structure & Navigation
 
-- Use **clear**, **concise** language
-- Follow our **MDX formatting** standards
-- Include **examples** where appropriate
-- Test all **code snippets**
-- Ensure all **links are working**
+- Place new pages in the most relevant directory (e.g., `ai-context/`, `integrations/`).
+- For API docs, follow `api-reference/endpoint/api/v1/...` folder conventions.
+- Update `docs.json` to surface new sections/pages in the sidebar navigation.
 
-### Commit Messages
+
+### Quality Checks
+- **Run**: `mint dev` and verify the page renders, links work, and images load
+- **Lint/content sanity**: check for broken links, heading hierarchy, and typos
+- **Keep line length readable**; wrap long lines and avoid trailing spaces
+
+### Commit and PR
+- Commit style: `docs(scope): short summary` (e.g., `docs(ai-context): add diagram`)
+- When adding files, update the Directory map in this README (`developer-docs/README.md`).
+- Push your branch and open a PR to `main`
+- In the PR description: **include screenshots** of visual changes and a brief summary
+- Request review from a maintainer; address feedback promptly
+
 Please follow [Conventional Commits](https://www.conventionalcommits.org/) format:
 - `fix: ...` → for bug fixes  
 - `docs: ...` → for documentation changes  
@@ -112,7 +118,6 @@ Please note that each CLI release is associated with a specific version of Mintl
 
 ```bash
 npm update -g mint
-
 ```
 
 ## Validating links
@@ -161,7 +166,10 @@ Here's what happens after you submit your PR:
 1. **Initial Check**: Automated checks will run to ensure your changes meet our basic requirements
 2. **Review**: A maintainer will review your PR within 1-2 business days
 3. **Feedback**: You may receive feedback requesting changes
-4. **Merge**: Once approved, your PR will be merged into the main branch
+4. **Merge**: merged into the `main` branch.  
+Once deployed, you can view your changes at [docs.getalchemystai.com](https://docs.getalchemystai.com/).  
+If issues arise, submit a follow-up PR with focused fixes.
+
 
 <Frame>
   <img src="/images/pr-merged.png" alt="Screenshot showing a successfully merged Pull Request." style={{ borderRadius: '0.5rem' }} />
