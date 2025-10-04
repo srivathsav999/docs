@@ -195,5 +195,13 @@
       "linkedin": "https://linkedin.com/company/alchemystai",
       "discord": "https://discord.gg/tkx5jpcr"
     }
+  },
+  "seo": {
+    "indexing": "all",
+    "metatags": {
+      "og:type": "website",
+      "og:site_name": "Alchemyst AI Documentation",
+      "og:description": "Complete guide to Alchemyst AI - context management, SDKs, integrations, and API reference"
+    }
   }
 }
