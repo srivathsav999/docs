@@ -37,6 +37,14 @@
             ]
           },
           {
+            "group": "Tutorials",
+            "pages": [
+              "tutorials/mcp-setup",
+              "tutorials/typescript-agent",
+              "tutorials/python-agent"
+            ]
+          },
+          {
             "group": "Contributions",
             "pages": [
               "contributing"
