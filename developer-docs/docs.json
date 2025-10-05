@@ -4,6 +4,18 @@
   "api": {
     "openapi": "https://platform-backend.getalchemystai.com/api/openapi.json"
   },
+  "fonts": {
+    "heading": {
+      "family": "Sora",
+      "weight": 400,
+      "format": "woff2"
+    },
+    "body": {
+      "family": "Sora",
+      "weight": 400,
+      "format": "woff2"
+    }
+  },
   "name": "Alchemyst AI Docs",
   "colors": {
     "primary": "#f49025",
