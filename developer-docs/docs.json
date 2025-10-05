@@ -67,7 +67,10 @@
               },
               {
                 "group": "By our community",
-                "pages": []
+                "pages": [
+                  "example-projects/community/discord-bot",
+                  "example-projects/community/b2b-newsletter-writer"
+                ]
               }
             ]
           }
