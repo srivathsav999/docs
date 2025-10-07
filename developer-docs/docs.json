@@ -219,6 +219,11 @@
       "discord": "https://dub.sh/context-community"
     }
   },
+  "integrations": {
+    "ga4": {
+        "measurementId": "G-WHNWY5LTDN"
+    }
+  },
   "seo": {
     "indexing": "all",
     "metatags": {
