@@ -1,15 +1,61 @@
 ---
 title: "Cursor"
-description: "Configure Cursor MCP"
+description: "Configure Cursor MCP with Alchemyst AI"
 icon: "/logo/cursor-logo.svg"
 ---
 
+### Prerequisites
 
-### mcps.json
+Befor Starting make sure,you have:
 
-1. In the editor, invoke the Command Palette (⌘K) and select **Settings > Cursor Settings**.
-2. In the Settings sidebar, go to **Features** → **Model Context Protocol** and toggle **MCP Servers** on (green).
-3. Under **Model Context Protocol**, click **Browse MCP Tools**.
-4. Locate an "SSE Server" entry (or similar), then click **Add to Cursor**
-5. When prompted, supply your authorization details in the OAuth/auth flow. Cursor will install and configure the SSE endpoint automatically.
-6. Click **+ Add New MCP Server**. In the dialog:, set **Name**: e.g. `My-SSE-Feed`, **Type**: **http** , **Command**: leave blank (Cursor will call the HTTP endpoint directly)
+- You have **Visual Studio Code v1.101+** installed.
+- You have a valid **Alchemyst Platform API key**.
+- MCP must be enabled in cursor.
+
+Now, to cofigure **Alchemyst AI** with **Cursor** via **MCP** follow the below commands:
+
+### Configuring via mcp.json
+
+1. Launch **Cursor** application in you (MAC/Windows).
+2. Invoke the **Command Palette** with `⌘K` (Mac) or `Ctrl+shift+P` (Windows).
+3. Search for and select:  
+   **Settings → Cursor Settings.**
+4. In the **Settings** sidebar, search and navigate to:  
+   **`Tools & MCP`**
+5. On **Tools & MCP** page you will able to see a button named:  
+   **`New MCP server`**  
+    Click on it.
+6. When, you click on **New MCP Server** button, `mcp.json` file will be opened automatically.
+7. Now, in the `mcp.json` file you will se **""mcpServers""** object. Add the follwing section inside **""mcpServers""** object:
+
+```json
+"your_mcp_server_name": {
+      "url": "https://mcp.getalchemystai.com/mcp/sse",
+      "headers": {
+        "Authorization": "Bearer YOUR_ALCHEMYST_PLATFORM_API_KEY"
+      }
+    }
+```
+
+8. Change `your_mcp_server_name` to the name you wanted to give your MCP server. e.g > `Alchemyst`.
+9. Change `YOUR_ALCHEMYST_PLATFORM_API_KEY` to the your own key, which you will get after logning on **[Alchemyst Platform](https://platform.getalchemystai.com)**.
+10. Now, save the file navigate back to **`Tools & MCP`** page inside the **Cursor settings**.
+11. Here, you will able to see your added MCP Server.
+12. Make sure the toggle button is in front to MCP server named should **ON (green)**, and there should be green dot on the icon of you MCP server. Indicating server is successfully.
+13. If it so then, congratulations to you. Your **Cursor** is now intgrated with **Alchemyst AI**.
+
+**Your Alchemyst MCP server is now live inside Cursor!**
+
+## Troubleshooting
+
+| Issue                  | Possible Cause                      | Fix                                                                      |
+| :--------------------- | :---------------------------------- | :----------------------------------------------------------------------- |
+| MCP toggle is missing  | Outdated Cursor version             | Update Cursor to the latest version                                      |
+| SSE connection fails   | Network restrictions or firewall    | Allow outbound access to `https://mcp.getalchemystai.com`                |
+| "Authorization failed" | Incorrect or expired API key        | Regenerate your API key from [Alchemyst Dashboard](https://alchemyst.ai) |
+| MCP server appearing   | `mcps.json` not formatted correctly | Validate your JSON syntax                                                |
+| No context syncing     | MCP service not started             | Click **Start** beside the MCP server entry in Cursor                    |
+
+```
+
+```
