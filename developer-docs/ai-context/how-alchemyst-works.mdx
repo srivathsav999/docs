@@ -3,12 +3,104 @@ title: 'How does Alchemyst work?'
 description: 'Getting started in 3 minutes'
 ---
 
-At **Alchemyst AI**, we make it simple to give your AI applications the context they need <br />so they become smarter, more accurate, and more useful.  
+At **Alchemyst AI**, we provide AI applications with the context they need to become **smarter**, more **accurate**, and more **useful**. This page explains the proposed scope and outline for the Context Processor, gives a concise top-level view of how the system works, highlights technical insights and their implications, and shows practical examples and use-cases.
 
-Follow these quick steps to get started with our **Context Processor**:  
+
+## Overview
+
+**Alchemyst** converts your raw documents and data into retrievable **context** that augments model responses. The flow is:
+
+1. **Ingest**: you upload documents, files, or connect a data source (S3, Google Drive, database export).
+2. **Normalize & Parse**: files are parsed, normalized, and split into chunks suitable for embedding (chunking and metadata tagging).
+3. **Encode & Index**: each chunk is encoded into a vector (embedding) and stored in an index (vector database) along with metadata.
+4. **Retrieve**: at query time a retriever selects the most relevant chunks based on similarity, filters, and business rules.
+5. **Compose Context**: retrieved chunks are ranked and composed into a compact context window with additional signals (recency, trust score, source attribution).
+6. **Model Prompting & Response**: the assembled context is supplied to an LLM or reasoning engine which generates responses; optional grounding and citations are attached.
+7. **Feedback & Iteration**: user feedback, corrections, and new data are fed back into the index to improve future retrieval.
+
+### Key System Components
+
+- **Ingest adapters:** Upload UI, connectors, and APIs for importing data from sources like S3 or Google Drive.
+- **Parsers & chunkers:** Handle file-type parsing, normalization, and content chunking with metadata tagging.
+- **Embedding service:** Converts chunks into vector embeddings using pluggable models.
+- **Vector index & storage:** Scalable vector database for efficient search and filtering.
+- **Retriever & ranker:** Finds and orders the most relevant chunks using similarity and business rules.
+- **Context composer:** Builds the final prompt window with ranked context, recency, and safety checks.
+- **Model layer:** Connects to LLMs or reasoning engines for grounded, context-rich responses.
+- **APIs & SDKs:** Developer tools for seamless integration and customization.
+- **Monitoring & access control:** Provides logging, auditing, and secure role-based permissions.
+
+## System Contract (Inputs / Outputs / Errors)
+
+- **Inputs**: documents (PDF, HTML, text, markdown, JSON), optional metadata (org, project, tags), and query text.
+- **Outputs**: model responses augmented with source citations, relevance scores, and optionally extracted structured data.
+- **Error modes**: parsing failures, embedding timeouts, indexing errors, rate limits, and model failures. System returns clear error codes and partial results when possible.
+- **Success criteria**: responses that increase answer precision and provide verifiable citations for >= X% of retrieval-backed responses (configurable per project).
+
+## Technical Implications
+
+Below are the most important technical patterns and their practical implications when integrating Alchemyst.
+
+1. **Chunking strategy**
+	- **Implication**: chunk size (`tokens`) affects embedding cost, recall, and prompt fitting. Choose chunk sizes so that context fits the model's prompt window while preserving semantic units.
+
+2. **Embeddings and model choice**
+	- **Implication**: different embedding models produce different similarity behavior. Allow pluggable embedding backends and measure retrieval quality for your dataset.
+
+3. **Metadata & filtering**
+	- **Implication**: index metadata (`source`, `date`, `confidence`) enables precise filtering and reduces hallucinations. Design metadata that supports your business queries (e.g., region, product).
+
+4. **Retrieval precision vs. cost**
+	- **Implication**: denser retrieval (more `vectors` returned and re-ranking) improves accuracy but increases compute and latency. Use hybrid strategies (`sparse filters` + `vector similarity`) for best cost-performance.
+
+5. **Prompt and context composition**
+	- **Implication**: how you arrange retrieved chunks in the prompt (most relevant first, grouping, truncation strategy) strongly influences output quality. Implement deterministic composition to improve reproducibility.
+
+6. **Caching and warm-up**
+	- **Implication**: cache embeddings and popular query results. Pre-warm frequently used contexts to reduce latency and lower per-call costs.
+
+7. **Traceability & explainability**
+	- **Implication**: save retrieval traces (which chunks were used) so responses can be audited and traced back to sources.
+
+8. **Privacy, multi-tenancy & access control**
+	- **Implication**: separate indexes or namespace isolation for tenants, per-tenant encryption keys, and strict RBAC are essential for enterprise adoption.
+
+9. **Scalability and sharding**
+	- **Implication**: vector indexes should support autoscaling and sharding; architect for horizontal scaling of both storage and compute, and use async ingestion pipelines.
+
+## Edge Cases 
+
+- **Documents with no useful signal or only images:** require OCR or will have low-quality embeddings.
+- **Extremely large documents:** need streaming ingestion and hierarchical chunking.
+- **Very short queries (one token):**  similarity can be noisy; add query expansion or fallback heuristics.
+- **Stale or conflicting documents:**  use recency and trust scoring to prefer authoritative sources.
+
+## Examples & Use-Cases
+
+1. **Customer support knowledge base**
+	 - **Flow:** ingest product docs, release notes, and past tickets → retrieve relevant passages at query time → LLM composes an answer with citations and suggested steps.
+	 - **Value:** faster, more accurate responses and consistent citations for agents and chatbots.
+
+2. **Engineering code assistant**
+	 - **Flow:** ingest code snippets, design docs, and API specs → retrieve related code examples and API docs → provide code fixes, examples, or explainers with links to source files.
+	 - **Value:** reduce onboarding time and increase developer productivity.
+
+
+3. **Product content summarization and newsroom**
+	 - **Flow:** ingest long-form content → summarize by product, date, or topic; produce executive summaries with source attributions.
+	 - **Value:** timely summaries and consistent messaging across teams.
+
+## Quick Start 
 
 1. **Create an account** on our platform: [platform.getalchemystai.com](https://platform.getalchemystai.com).  
 2. After signing up, **access the Context Processor** from your dashboard.  
 3. **Upload your documents, files, or data** to provide the AI with the background it needs.  
 4. Use the **Converse feature** to start getting context-aware responses instantly.  
-5. **Integrate with your own applications** using our APIs. For details, check the [API Reference](https://docs.getalchemystai.com/api-reference/introduction).  
+5. **Integrate with your own applications** using our APIs. For details, check the [API Reference](https://docs.getalchemystai.com/api-reference/introduction). 
+
+
+## Conclusion
+
+**Alchemyst** simplifies the process of giving AI models the right **context** so they can reason **more accurately** using your own data. By transforming raw information into structured, retrievable context, it bridges the gap between static knowledge and dynamic intelligence.
+
+Whether you’re enhancing customer support, powering developer tools, or building compliance systems, the Context Processor provides a reliable foundation for **context-aware applications**.
