@@ -59,7 +59,8 @@
           {
             "group": "Contributions",
             "pages": [
-              "contributing"
+              "contribution/contributing",
+              "contribution/awesome-saas-repo"
             ]
           },
           {
@@ -76,7 +77,6 @@
               {
                 "group": "By our community",
                 "pages": [
-                  "example-projects/community/awesome-saas-repo",
                   "example-projects/community/discord-bot",
                   "example-projects/community/b2b-newsletter-writer"
                 ]
