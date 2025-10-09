@@ -59,7 +59,8 @@
           {
             "group": "Contributions",
             "pages": [
-              "contributing"
+              "contribution/contributing",
+              "contribution/awesome-saas-repo"
             ]
           },
           {
