@@ -8,15 +8,13 @@ At **Alchemyst AI**, we provide AI applications with the context they need to be
 
 ## Overview
 
-**Alchemyst** converts your raw documents and data into retrievable **context** that augments model responses. The flow is:
+**Alchemyst** automatically converts your data into retrievable **context** that enhances model reasoning and memory. The platform works as follows:
 
-1. **Ingest**: you upload documents, files, or connect a data source (S3, Google Drive, database export).
-2. **Normalize & Parse**: files are parsed, normalized, and split into chunks suitable for embedding (chunking and metadata tagging).
-3. **Encode & Index**: each chunk is encoded into a vector (embedding) and stored in an index (vector database) along with metadata.
-4. **Retrieve**: at query time a retriever selects the most relevant chunks based on similarity, filters, and business rules.
-5. **Compose Context**: retrieved chunks are ranked and composed into a compact context window with additional signals (recency, trust score, source attribution).
-6. **Model Prompting & Response**: the assembled context is supplied to an LLM or reasoning engine which generates responses; optional grounding and citations are attached.
-7. **Feedback & Iteration**: user feedback, corrections, and new data are fed back into the index to improve future retrieval.
+1. **Ingest:** Bring data from databases, files, user interactions, and external APIs.  
+2. **Enrich & Index:** Normalize and enrich data, then index it for fast retrieval by your agents or LLM prompts.  
+3. **Serve Context:** Provide contextual snippets and memories to models at inference time.  
+4. **Orchestrate:** Chain tools and services to create deterministic workflows and agent behaviors.  
+5. **Persist & Evolve:** Store user- or application-level memory that can be updated and audited over time.
 
 
 ## System Requirements
