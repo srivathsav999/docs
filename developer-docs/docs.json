@@ -130,6 +130,12 @@
               "integrations/llm-proxy/anthropic",
               "integrations/llm-proxy/openai"
             ]
+          },
+           {
+            "group": "Extensions",
+            "pages": [
+              "integrations/extensions/chat-gpt"
+            ]
           }
         ]
       },
