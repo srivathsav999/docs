@@ -132,7 +132,7 @@
             ]
           },
            {
-            "group": "Extensions",
+            "group": "Chrome Extensions",
             "pages": [
               "integrations/extensions/chat-gpt"
             ]
