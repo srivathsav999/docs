@@ -7,7 +7,7 @@ description: Use Alchemyst AI’s memory inside AI models through our Chrome ext
 
 Bring **Alchemyst AI’s memory** directly into your AI model such as chatGPT, claude using our [Chrome extension](https://github.com/Alchemyst-ai/chrome-extension). This extension seamlessly connects AI model with your **Alchemyst AI account**, letting your assistant remember context you add across chats.
 
-<iframe
+{/* <iframe
   width="560"
   height="315"
   src="https://www.youtube.com/embed/IUJU5vqMaW4?si=pYVT5RfO5V4dQxs-"
@@ -16,14 +16,26 @@ Bring **Alchemyst AI’s memory** directly into your AI model such as chatGPT, c
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
   referrerpolicy="strict-origin-when-cross-origin"
   allowfullscreen
-></iframe>
+></iframe> */}
+import { VideoCarousel } from '/snippets/video-carousel.mdx';
+
+<VideoCarousel urls={[
+  {
+    url: "https://www.youtube.com/embed/IUJU5vqMaW4?si=pYVT5RfO5V4dQxs-",
+    title: "Integrating Alchemyst AI with ChatGPT"
+    },
+    {
+      title: "Integrating Alchemyst AI with Claude", url: "https://www.youtube.com/embed/wezWSxl8Z3U"
+    }
+  ]}
+/>
 
 ## Installation
 
-1. **Download the Chrome Extension**  
+1. **Download the Chrome Extension**
    Grab the extension file [click here](https://github.com/Alchemyst-ai/chrome-extension) or install it directly from the Chrome Web Store.
 
-2. **Enable the Extension**  
+2. **Enable the Extension**
    Open **chrome://extensions/** → toggle **Developer mode ON** → click **Load unpacked** (if local install) or simply **Enable** after installation.
 
 ---
@@ -42,7 +54,7 @@ Bring **Alchemyst AI’s memory** directly into your AI model such as chatGPT, c
 
 ## Enable Alchemyst AI Memory
 
-After entering your key, look for the **Alchemyst AI memory toggle icon** inside the **message box**.  
+After entering your key, look for the **Alchemyst AI memory toggle icon** inside the **message box**.
 Flip the switch to **ON** - and that’s it!
 
 Your Chat sessions will now be enhanced with **Alchemyst AI’s memory** - preserving important context across conversations.
@@ -69,10 +81,10 @@ _Example view of the memory toggle icon in ChatGPT._
 
 ## Troubleshooting
 
-- **Memory not activating?**  
+- **Memory not activating?**
   Double-check your API key and ensure the extension is **enabled** in Chrome.
 
-- **Can’t see the icon?**  
+- **Can’t see the icon?**
   Refresh the LLM page after installation.
 
 ---

@@ -127,8 +127,8 @@ developer-docs/
 - If everything goes well and your PR is merged to `main`, you will see it at `https://docs.getalchemystai.com/`.
 - If issues arise, submit a follow-up PR with focused fixes
 
-</br>
- 
+<br />
+
  Note: Before pushing or opening a PR, pull the latest changes from `main`.
 
 ## Resources
