@@ -1,0 +1,106 @@
+---
+title: "How to get featured in Awesome‑SaaS"
+description: "How community contributors can prepare and get their projects listed in the Awesome‑SaaS collection."
+---
+
+## What are AI agents?
+
+AI agents are modular programs that combine models, tools, and memory to perform higher‑level tasks. In this repository, an **agent** is a self‑contained folder under `agents/` that bundles code, configuration, and documentation so builders can run, extend, or deploy a specific AI workflow — for example: newsletter generation, document summarization, or ticket triage.
+
+Agents can be delivered as CLI tools, serverless API routes, bots, or full SaaS templates that integrate with the Alchemyst AI Platform.
+
+
+## Quick Guide
+
+This guide explains how to prepare and submit your AI agent so it can be featured in the Awesome-SaaS collection.
+
+* Eligibility requirements to appear in the Awesome‑SaaS listing.
+* Required files and metadata so the automated generator can discover your project.
+* How to open a focused PR and what to include in the description for a smooth review.
+* Contributor-focused troubleshooting steps if your project does not appear.
+
+## Repository Overview
+
+* **Root docs:** `README.md`, `index.md`, `CONTRIBUTING.md`.
+* **Agents:** each agent lives in `agents/` and should include a `README.md` and a dependency manifest (`package.json`, `requirements.txt`, etc.).
+* **Generators:** `list.js` and `leaderboard.js` produce the public listing and contributor leaderboard.
+* **Community leaderboard:** see `leaderboard/README.md` for maintainer notes.
+
+
+
+## How to prepare your project (step‑by‑step)
+
+Follow these steps to make your project eligible for the Awesome-SaaS listing and easy for maintainers and other builders to evaluate.
+
+1. **Make the repository public**
+   * Ensure the repository is **public on GitHub** so the listing script can discover it.
+2. **Add the repository topic**
+   * Add the exact topic `alchemyst-awesome-saas` to your repo
+3. **Provide a clear `README.md` that includes**:
+
+   * One‑line description.
+   * Quick install & run steps.
+   * Example usage and a short **Why this helps builders** paragraph.
+   * Required environment variables and a sample `.env.example`.
+   * License information.
+
+4. **Keep the agent self-contained**
+   Put all runtime files and manifests inside `agents/<your-agent>/`, including:
+   * Dependency manifests (e.g., `package.json`, `requirements.txt`).
+   * Config samples (e.g., `.env.example`).
+   * A minimal runnable demo or reproducible example so reviewers can confirm it runs locally.
+5. **Add helpful extras** (optional but recommended)
+
+   * Screenshots or a short demo GIF.
+   * CI (GitHub Actions) with basic smoke tests.
+   * README badges (build, license, version).
+   * Additional topic tags describing the agent’s domain.
+
+
+## Recommended folder layout
+
+This is where all community-contributed AI agents live. Each sub-folder here contains an agent built using the Alchemyst AI Platform, whether it’s a CLI agent, SaaS prototype, or something experimental with Memory AI.
+```
+agents/
+├── email-agent/
+│ ├── README.md
+│ ├── main.py
+│ ├── requirements.txt
+│ └── ...
+├── chatbot-agent/
+│ ├── README.md
+│ ├── app.js
+│ └── ...
+└── ...
+```
+
+
+## PR & Contribution checklist
+
+* Create a feature branch (e.g. `feature/docs-community` or `feature/community-<your-project>`).
+* Keep PRs focused: one doc or feature per PR.
+* Confirm `alchemyst-awesome-saas` is added to your repository topics.
+* Add links to your project in the PR description and request the `hacktoberfest-accepted` label if you want the PR to count for Hacktoberfest.
+
+
+## Examples
+- [B2b-newsletter-writer](https://docs.getalchemystai.com/example-projects/community/b2b-newsletter-writer) - The **B2B Newsletter AI Agent** is a SaaS prototype that automatically generates audience-focused newsletters for businesses using the Alchemyst AI Platform
+- [Discord-bot](https://docs.getalchemystai.com/example-projects/community/discord-bot) - A simple Discord bot powered by [Alchemyst AI SDK](https://docs.getalchemystai.com/integrations/sdk/typescript-sdk) and OpenAI. The bot stores conversation context and provides smart answers to users’ questions in direct messages.
+
+## Troubleshooting
+- Keep your agent self-contained (all dependencies in its own folder).
+- Include a clear `README.md` with:
+   * What the agent does
+   * Setup steps
+   * Example usage
+- Stay aligned with the repo’s theme (AI Agents, AI SaaS, Agentic AI, Memory AI).
+- Avoid broken, incomplete, or irrelevant code.
+
+## Need Help?
+
+If you get stuck or want to share feedback:
+
+- Browse the **Guides** and **API docs** on this site.
+- Search the documentation for targeted answers.
+- Join our [Discord server](https://dub.sh/context-community) for real-time help.
+
