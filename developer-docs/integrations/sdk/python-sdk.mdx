@@ -3,8 +3,6 @@ title: 'Python SDK'
 description: 'Get started with the Alchemyst Python SDK'
 ---
 
-# Alchemyst AI Python SDK
-
 
 ## Installation
 
@@ -37,9 +35,9 @@ docs_array = []
 docs_array.append({
     "content": "files content",
     "metadata": {   # optional
-        "file_name": "name of the file",
-        "doc_type": "pdf/txt/json",
-        "group_name": ["group1", "group2"]
+        "filename": "file_name",
+        "filetype": "pdf/txt/json",
+        "groupName": ["group1", "group2"]
     }
 })
 
@@ -50,14 +48,28 @@ response = client.v1.context.add(
     context_type="resource",   # one of: resource | conversation | instruction
     scope="internal",          # one of: internal | external
     metadata={
-        "file_name": "file_name",
-        "doc_type": "type",
-        "last_modified_at": "2025-10-02T04:07:26.495484",
-        "size": 1234,   # number
-        "group_name": ["group1", "group2"]
+        "fileName": "name of the file",
+        "fileType": "type",
+        "lastModified": "timestamp",
+        "fileSize": 1234,   # number
+        "groupName": ["group1", "group2"]
     }
 )
 ```
+
+<Warning>
+  **Version Requirements**: The `groupName` field is introduced in Python SDK version 0.5.0. If you use `groupName` in previous versions, you will encounter an error. If `groupName` is not provided, it will be set to a default value automatically.
+</Warning>
+
+<Note>
+  **groupName**: The group name acts like a namespace which creates a scope for context. Documents with the same group name will be grouped together for better organization and retrieval.
+  
+  **Example Use Cases**:
+  - `['project-alpha']` - Group all documents related to a specific project
+  - `['customer-support', 'tier-1']` - Organize support documentation by department and priority
+  - `['legal', 'contracts']` - Categorize legal documents by type and category
+  - `['training', 'onboarding']` - Group training materials for new employee onboarding
+</Note>
 
 ## Context: Search
 
@@ -67,15 +79,14 @@ from alchemyst_ai import AlchemystAI
 client = AlchemystAI()
 
 results = client.v1.context.search(
-    query="find test-data used",
+    query="your search query",
     similarity_threshold=0.8,
     minimum_similarity_threshold=0.5,
     scope="internal",   # internal | external
     metadata={          # Optional - can be None
-        "size": 100,
-        "doc_type": "ai/conversation",
-        "file_name": "chatgpt-convo-1",
-        "group_name": ["project-ideas"]
+        "fileType": "ai/conversation",
+        "fileName": "chatgpt-convo-1",
+        "groupName": ["project-name"]
     }
 )
 ```
